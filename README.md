@@ -60,24 +60,26 @@ https://hostname[:port]/path/to/page
 
 ---
 
-## Wire-Level Protocol (HTTP-like)
+## Wire-Level Protocol (HTTPS-based)
 
 ### Request Format
 
 ```
-GET /path/to/page.epub LITEPUB/1.0
+GET /path/to/page.epub HTTP/1.1
 Host: example.org
 ```
 
 ### Response Format
 
 ```
-LITEPUB/1.0 200 OK
+HTTP/1.1 200 OK
 Content-Type: application/epub+zip
 Content-Length: 123456
 
 (binary EPUB data)
 ```
+
+*Note: Future versions may include a `X-Litepub-Protocol: 1.0` header to explicitly identify Litepub responses.*
 
 ### Response Codes
 
@@ -203,14 +205,14 @@ Litepub is not a successor to the web. It is a parallel space, focused on:
 ### Request
 
 ```
-GET /articles/intro.epub LITEPUB/1.0
+GET /articles/intro.epub HTTP/1.1
 Host: leafbook.site
 ```
 
 ### Response
 
 ```
-LITEPUB/1.0 200 OK
+HTTP/1.1 200 OK
 Content-Type: application/epub+zip
 Content-Length: 67890
 
